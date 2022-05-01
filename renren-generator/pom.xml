@@ -71,6 +71,7 @@
 			<artifactId>fastjson</artifactId>
 			<version>${fastjson.version}</version>
 		</dependency>
+
 		<dependency>
 			<artifactId>velocity</artifactId>
 			<groupId>org.apache.velocity</groupId>

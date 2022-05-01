@@ -8,6 +8,7 @@
 		<version>2.1.8.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>com.junting.gulimall</groupId>
 	<artifactId>gulimall-product</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -20,9 +21,56 @@
 	</properties>
 
 	<dependencies>
+		<!--		springSession依赖-->
+		<dependency>
+			<groupId>org.springframework.session</groupId>
+			<artifactId>spring-session-data-redis</artifactId>
+		</dependency>
+<!--		开启spring缓存还需要redis-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.redisson</groupId>
+			<artifactId>redisson</artifactId>
+			<version>3.13.4</version>
+		</dependency>
+<!--		redis-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>io.lettuce</groupId>
+					<artifactId>lettuce-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+		</dependency>
+		<!-- 自定义配置文件带提示 -->
+		<!--        <dependency>-->
+		<!--            <groupId>org.springframework.boot</groupId>-->
+		<!--            <artifactId>spring-boot-configuration-processor</artifactId>-->
+		<!--            <optional>true</optional>-->
+		<!--        </dependency>-->
+
+		<!--		导入thymeleaf依赖、热部署依赖devtools使页面实时生效-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
 
 		<dependency>
-			<groupId>com.atguigu.gulimall</groupId>
+			<groupId>com.junting.gulimall</groupId>
 			<artifactId>gulimall-third-party</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>

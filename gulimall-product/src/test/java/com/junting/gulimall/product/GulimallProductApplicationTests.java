@@ -2,20 +2,28 @@ package com.junting.gulimall.product;
 
 
 import com.aliyun.oss.OSSClient;
+import com.junting.gulimall.product.service.AttrGroupService;
 import com.junting.gulimall.product.service.BrandService;
 import com.junting.gulimall.product.service.CategoryService;
+import com.junting.gulimall.product.service.SkuSaleAttrValueService;
+import com.junting.gulimall.product.vo.ItemSaleAttrVo;
+import com.junting.gulimall.product.vo.SpuItemAttrGroup;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestComponent;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.junit.runner.RunWith;
 import org.junit.Test;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @Slf4j
 @RunWith(SpringRunner.class)
@@ -23,9 +31,20 @@ import java.util.Arrays;
 public class GulimallProductApplicationTests {
     @Autowired
     BrandService brandService;
-
     @Autowired
     OSSClient ossClient;
+    @Autowired
+    AttrGroupService attrGroupService;
+    @Autowired
+    SkuSaleAttrValueService skuSaleAttrValueService;
+
+    @Test
+    public void testGroup() throws FileNotFoundException {
+//        List<SpuItemAttrGroup> attrGroupWithAttrsBySpuId = attrGroupService.getAttrGroupWithAttrsBySpuId(100L, 225L);
+//        System.out.println(attrGroupWithAttrsBySpuId);
+        List<ItemSaleAttrVo> saleAttrsBuSpuId = skuSaleAttrValueService.getSaleAttrsBuSpuId(10L);
+        System.out.println(saleAttrsBuSpuId);
+    }
 
     @Test
     public void test() throws FileNotFoundException {
@@ -41,20 +60,30 @@ public class GulimallProductApplicationTests {
         InputStream inputStream = new FileInputStream("C:\\Users\\ZengJunting\\Desktop\\u=1316800099,2051258115&fm=26&fmt=auto.webp");
         ossClient.putObject("minizeng123", "meinv.jpg", inputStream);
 
-		// 关闭OSSClient。
+        // 关闭OSSClient。
         ossClient.shutdown();
 
-		System.out.println("保存成功");
+        System.out.println("保存成功");
 
     }
 
-//    @Autowired
+    //    @Autowired
 //    CategoryService categoryService;
 //    @Test
 //    public void testFindPath(){
 //        Long[] paths = categoryService.findCategoryPath(335L);
 //        log.info("查询总路径为{}", Arrays.asList(paths));
 //    }
+    @Autowired
+    StringRedisTemplate redisTemplate;
 
+    @Test
+    public void testRedis() {
+        ValueOperations<String, String> ops = redisTemplate.opsForValue();
+        ops.set("Hello","world");
+        String hello = ops.get("Hello");
+        System.out.println(hello);
+
+    }
 
 }

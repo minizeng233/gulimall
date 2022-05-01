@@ -1,0 +1,27 @@
+{
+  "query": {
+    "match_all": {}
+  },
+  "aggs": {
+    "brand-aggs": {
+      "terms": {
+        "field": "brandId",
+        "size": 10
+      },
+      "aggs": {
+        "brandName-aggs": {
+          "terms": {
+            "field": "brandName",
+            "size": 10
+          }
+        }
+      }
+    },
+    "Catalog_aggs": {
+      "terms": {
+        "field": "catalogId",
+        "size": 10
+      }
+    }
+  }
+}

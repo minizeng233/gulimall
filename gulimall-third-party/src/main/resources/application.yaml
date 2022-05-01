@@ -11,7 +11,12 @@ spring:
       oss:
         endpoint: oss-cn-shenzhen.aliyuncs.com
         bucket: minizeng123
-
+      sms:
+        host: https://gyytz.market.alicloudapi.com
+        path: /sms/smsSend
+        skin: 2e65b1bb3d054466b82f0c9d125465e2
+        sign: 908e94ccf08b4476ba6c876d13f084ad
+        appCode:
 
 server:
   port: 4000

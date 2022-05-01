@@ -1,14 +1,11 @@
 package com.junting.gulimall.member.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.junting.gulimall.member.entity.MemberReceiveAddressEntity;
 import com.junting.gulimall.member.service.MemberReceiveAddressService;
@@ -29,6 +26,18 @@ import com.junting.common.utils.R;
 public class MemberReceiveAddressController {
     @Autowired
     private MemberReceiveAddressService memberReceiveAddressService;
+
+    /**
+        *@Description  查询用户地址
+        *@author mini_zeng
+        *@Date 2022/1/16
+        *@Param memberId
+        *@return List<MemberAddressVo>
+        **/
+    @GetMapping("/{memberId}/addresses")
+    List<MemberReceiveAddressEntity> getAddress(@PathVariable("memberId") Long memberId){
+        return memberReceiveAddressService.getAddress(memberId);
+    }
 
     /**
      * 列表

@@ -10,16 +10,46 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>gulimall-common</artifactId>
-
+    <properties>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Hoxton.SR4</spring-cloud.version>
+        <spring-boot.version>2.3.1.RELEASE</spring-boot.version>
+        <spring-cloud-alibaba.version>2.1.2.RELEASE</spring-cloud-alibaba.version>
+    </properties>
 
 <dependencies>
+<!--    HttpUtils依赖-->
+    <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>1.2.15</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+        <version>4.2.1</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpcore</artifactId>
+        <version>4.2.1</version>
+    </dependency>
+    <dependency>
+        <groupId>commons-lang</groupId>
+        <artifactId>commons-lang</artifactId>
+        <version>2.6</version>
+    </dependency>
+    <dependency>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-util</artifactId>
+        <version>9.3.7.v20160115</version>
+    </dependency>
 <!--自定义校验-->
     <dependency>
         <groupId>javax.validation</groupId>
         <artifactId>validation-api</artifactId>
         <version>2.0.1.Final</version>
     </dependency>
-
     <!-- mybatisPLUS-->
     <dependency>
         <groupId>com.baomidou</groupId>
@@ -52,6 +82,37 @@
         <version>8.0.17</version>
     </dependency>
 
+    <!--sentinel和actuator用于流量监控和统计-->
+    <dependency><!--流量监控-->
+        <groupId>com.alibaba.cloud</groupId>
+        <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        <version>${spring-cloud-alibaba.version}</version>
+    </dependency>
+    <dependency><!--流量统计-->
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+        <version>${spring-cloud-alibaba.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>com.alibaba.csp</groupId>
+        <artifactId>sentinel-web-servlet</artifactId>
+        <version>1.7.1</version>
+        <scope>compile</scope>
+    </dependency>
+
+    <!--链路追踪-->
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-zipkin</artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-validator</artifactId>
+        <version>6.0.17.Final</version>
+    </dependency>
+
+
     <dependency>
         <groupId>javax.servlet</groupId>
         <artifactId>servlet-api</artifactId>
@@ -67,11 +128,37 @@
 </dependencies>
 
     <dependencyManagement>
+<!--        <dependencies>-->
+<!--            <dependency>-->
+<!--                <groupId>com.alibaba.cloud</groupId>-->
+<!--                <artifactId>spring-cloud-alibaba-dependencies</artifactId>-->
+<!--                <version>2.1.0.RELEASE</version>-->
+<!--                <type>pom</type>-->
+<!--                <scope>import</scope>-->
+<!--            </dependency>-->
+<!--        </dependencies>-->
+
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>2.1.0.RELEASE</version>
+                <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

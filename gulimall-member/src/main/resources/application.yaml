@@ -1,3 +1,4 @@
+ipAddr: 192.168.126.128
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -15,6 +16,14 @@ spring:
       secret-key: ofEpH6gUPqrQF6tIfI45JJHQoyLFWc
       oss:
         endpoint: oss-cn-shenzhen.aliyuncs.com
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+  thymeleaf:
+    cache: false
+  redis:
+    host: 192.168.126.128
+    port: 6379
 
 
 

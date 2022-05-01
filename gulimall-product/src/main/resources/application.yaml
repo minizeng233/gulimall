@@ -17,7 +17,11 @@ spring:
         endpoint: oss-cn-shenzhen.aliyuncs.com
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
-
+  thymeleaf:
+    cache: false
+  redis:
+    host: 192.168.126.128
+    port: 6379
 
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
@@ -33,3 +37,9 @@ server:
 logging:
   level:
     com.junting.gulimall: debug
+
+gulimall:
+  thread:
+    core-size: 20  # 20-50
+    max-size: 200
+    keep-alive-time: 10  # 10s

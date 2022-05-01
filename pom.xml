@@ -20,6 +20,12 @@
 		<module>gulimall-member</module>
 		<module>gulimall-coupon</module>
 		<module>gulimall-ware</module>
-	</modules>
+		<module>gulimall-search</module>
+		<module>gulimall-auth-server</module>
+		<module>gulimall-cart</module>
+		<module>gulimall-order</module>
+		<module>gulimall-seckill</module>
+        <module>testee</module>
+    </modules>
 
 </project>

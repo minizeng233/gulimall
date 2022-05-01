@@ -11,6 +11,7 @@ import com.junting.common.utils.Query;
 import com.junting.gulimall.coupon.dao.SeckillSkuRelationDao;
 import com.junting.gulimall.coupon.entity.SeckillSkuRelationEntity;
 import com.junting.gulimall.coupon.service.SeckillSkuRelationService;
+import org.springframework.util.StringUtils;
 
 
 @Service("seckillSkuRelationService")
@@ -18,9 +19,15 @@ public class SeckillSkuRelationServiceImpl extends ServiceImpl<SeckillSkuRelatio
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
+        QueryWrapper<SeckillSkuRelationEntity> wrapper = new QueryWrapper<>();
+        String promotionSessionId = (String) params.get("promotionSessionId");
+        // 场次ID不是空
+        if(!StringUtils.isEmpty(promotionSessionId)){
+            wrapper.eq("promotion_session_id",promotionSessionId);
+        }
         IPage<SeckillSkuRelationEntity> page = this.page(
                 new Query<SeckillSkuRelationEntity>().getPage(params),
-                new QueryWrapper<SeckillSkuRelationEntity>()
+                wrapper
         );
 
         return new PageUtils(page);

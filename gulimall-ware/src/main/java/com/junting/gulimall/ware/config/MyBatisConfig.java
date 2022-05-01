@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+
 /**
  * @author mini_zeng
  * @create 2022-01-05 17:01
@@ -30,4 +31,15 @@ public class MyBatisConfig {
         paginationInterceptor.setCountSqlParser(new JsqlParserCountOptimize(true));
         return paginationInterceptor;
     }
+
+    // 代理数据源，seata事务使用
+//    @Bean
+//    public DataSource dataSource(DataSourceProperties dataSourceProperties){
+//        HikariDataSource dataSource = dataSourceProperties.initializeDataSourceBuilder().type(HikariDataSource.class).build();
+//        if(StringUtils.hasText(dataSourceProperties.getName())){
+//            dataSource.setPoolName(dataSourceProperties.getName());
+//        }
+//        return new DataSourceProxy(dataSource);
+//    }
+
 }

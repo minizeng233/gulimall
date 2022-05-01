@@ -3,6 +3,7 @@ package com.junting.gulimall.ware.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.junting.common.utils.PageUtils;
 import com.junting.gulimall.ware.entity.WareInfoEntity;
+import com.junting.gulimall.ware.vo.FareVo;
 
 import java.util.Map;
 
@@ -18,5 +19,7 @@ public interface WareInfoService extends IService<WareInfoEntity> {
     PageUtils queryPage(Map<String, Object> params);
 
     PageUtils queryPageByCondition(Map<String, Object> params);
+
+    FareVo getFare(Long addrId);
 }
 
