@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class MyRedisConfig {
-    private String ip = "192.168.126.128";
+    private String ip = "192.168.126.129";
     // redission通过redissonClient对象使用 // 如果是多个redis集群，可以配置
     @Bean(destroyMethod = "shutdown")
     public RedissonClient redisson() {

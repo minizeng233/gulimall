@@ -2,6 +2,11 @@ spring:
   cloud:
     gateway:
       routes:
+        - id: gulimall_host_route
+          uri: lb://gulimall-product
+          predicates:
+            - Host=**.gulimall.com
+
         - id: product_route
           uri: lb://gulimall-product
           predicates:

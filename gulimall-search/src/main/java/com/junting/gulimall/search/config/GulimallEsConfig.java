@@ -27,7 +27,7 @@ public class GulimallEsConfig {
     public RestHighLevelClient restHighLevelClient() {
         RestHighLevelClient client = new RestHighLevelClient(
                 RestClient.builder(
-                        new HttpHost("192.168.126.128", 9200, "http")
+                        new HttpHost("192.168.126.129", 9200, "http")
                 )
         );
         return client;

@@ -1,8 +1,8 @@
-ipAddr: 192.168.126.128
+ipAddr: 192.168.126.129
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.126.128:3306/gulimall_ums?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://192.168.126.129:3306/gulimall_ums?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
     password: root
   application:
@@ -22,7 +22,7 @@ spring:
   thymeleaf:
     cache: false
   redis:
-    host: 192.168.126.128
+    host: 192.168.126.129
     port: 6379
 
 

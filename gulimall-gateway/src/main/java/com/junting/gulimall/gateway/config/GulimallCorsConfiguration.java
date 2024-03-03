@@ -6,6 +6,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
+import java.util.concurrent.CountDownLatch;
+
 /**
  * @author mini_zeng
  * @create 2022-01-03 15:48

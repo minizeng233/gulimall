@@ -25,7 +25,6 @@
 		<module>gulimall-cart</module>
 		<module>gulimall-order</module>
 		<module>gulimall-seckill</module>
-        <module>testee</module>
     </modules>
 
 </project>
